@@ -90,7 +90,7 @@ ORDER BY num DESC
 
 ### 2. Querying the Data
 
-###1a. Insert a new record for a track with custom values into the dataset 
+### 1a. Insert a new record for a track with custom values into the dataset 
 ```sql
 INSERT INTO spotify (Artist, Track, Album,	Album_type,
 Danceability, Energy, Loudness, Speechiness, Acousticness, 
@@ -102,20 +102,19 @@ VALUES ('Gorillaz',	'New Gold (feat. Tame Impala and Bootie Brown)', 'New Gold (
 -3.93,	0.0522,	0.0425,	0.0469,	0.116,	0.551,	108.014, 3.585833333, 'Gorillaz - New Gold ft. Tame Impala & Bootie Brown (Official Visualiser)',	
 'Gorillaz',	8435055,	282142,	7399,	'TRUE',	'TRUE',	63063467, 7.956896552,	'Spotify'
 )
+```
 
-
---1b. Identifying duplicates
-
+### 1b. Identifying duplicates
+```sql
 SELECT track, artist, COUNT(*) AS occurence
 FROM spotify
 GROUP BY 1,2
 HAVING  COUNT(*) > 1
 ORDER BY 2
+```
 
-
-
---and Removing duplicates
-
+### 1c. Removing duplicates
+```sql
 WITH Row_numb AS
 (SELECT *, ROW_NUMBER() OVER(PARTITION BY Track, artist ORDER BY track DESC) AS row_num
 FROM spotify
@@ -123,11 +122,11 @@ ORDER BY row_num DESC)
 
 DELETE FROM Row_numb 
 WHERE row_num > 1
+```
 
 
-
--- Identifying outliers in views
-
+### 1d. Identifying outliers in views
+```sql
 SELECT AVG(views) + 3 * STDDEV(views) 
 FROM spotify
  
@@ -142,15 +141,15 @@ SELECT *
 FROM spotify, Stats
 WHERE views > (mean_views + 3 * stddev_views)
    OR views < (mean_views - 3 * stddev_views);
+```
 
 
-
---1c. Retrieve the names of all tracks that have more than 1 billion streams.
-
+### 1e. Retrieve the names of all tracks that have more than 1 billion streams.
+```sql
 SELECT track
 FROM spotify
 WHERE stream > 1000000000
-
+```
 
 
 --2. List all albums along with their respective artists.
