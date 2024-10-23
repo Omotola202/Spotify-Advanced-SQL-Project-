@@ -130,7 +130,6 @@ WHERE row_num > 1
 SELECT AVG(views) + 3 * STDDEV(views) 
 FROM spotify
  
-
 WITH Stats AS (
     SELECT 
         AVG(views) AS mean_views,
@@ -260,7 +259,7 @@ WHERE view_rank <= 3
 SELECT track
 FROM spotify
 WHERE liveness > (SELECT AVG(liveness)
-				  FROM spotify)
+		  FROM spotify)
 ```
 
 ### 13.Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.
@@ -327,6 +326,7 @@ WHERE licensed = TRUE AND official_video = FALSE
 
 ### 21. Find the artist with the highest average loudness across all their tracks.
 ```sql
+
 SELECT artist, AVG(loudness) AS avg_loudness
 FROM spotify
 GROUP BY artist
@@ -417,18 +417,23 @@ FROM spotify
 ```
 
 ### 32. For each artist, calculate the cumulative total streams across their tracks, ordered by track title.
+ ```sql
 SELECT artist, track, stream, SUM(stream) OVER(PARTITION BY artist )
 FROM spotify
 ORDER BY track
+```
 
 ### 33. Display the top 3 most viewed tracks for each album, including album name and track title.
+ ```sql
 SELECT album, track, views, DENSE_RANK() OVER(PARTITION BY album ORDER BY views DESC) AS view_rank
 FROM spotify
+```
 
 ### 34. Delete all records where the 'Stream' count is less than 1000.
-
+ ```sql
 DELETE FROM spotify
 WHERE stream < 1000
+```
 
 ### 35. Find the album with the highest total number of streams.
 ```sql
@@ -438,6 +443,7 @@ GROUP By 1
 ORDER BY 2 DESC
 LIMIT 1
 ```
+
 ### 36. For each artist, find the track that has the most likes.
 ```sql
 WITH likes_rank AS
