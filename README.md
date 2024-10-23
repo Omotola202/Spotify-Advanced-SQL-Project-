@@ -98,9 +98,9 @@ Instrumentalness, Liveness, Valence, Tempo, Duration_min, Title, Channel, Views,
 Likes, Comments, Licensed, official_video, Stream,	Energy_Liveness,	most_played_on
 )
 
-VALUES ('Gorillaz',	'New Gold (feat. Tame Impala and Bootie Brown)', 'New Gold (feat. Tame Impala and Bootie Brown)',	'single',	0.695,	0.923,	
+VALUES ('Gorillaz',	'New Gold (feat. Tame Impala and Bootie Brown)', 'New Gold (feat. Tame Impala and Bootie Brown)', 'single', 0.695, 0.923,	
 -3.93,	0.0522,	0.0425,	0.0469,	0.116,	0.551,	108.014, 3.585833333, 'Gorillaz - New Gold ft. Tame Impala & Bootie Brown (Official Visualiser)',	
-'Gorillaz',	8435055,	282142,	7399,	'TRUE',	'TRUE',	63063467, 7.956896552,	'Spotify'
+'Gorillaz', 8435055, 282142, 7399, 'TRUE', 'TRUE', 63063467, 7.956896552, 'Spotify'
 )
 ```
 
