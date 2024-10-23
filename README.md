@@ -152,8 +152,8 @@ WHERE stream > 1000000000
 ```
 
 
---2. List all albums along with their respective artists.
-
+### 2. List all albums along with their respective artists.
+```sql
 SELECT DISTINCT artist, album
 FROM spotify
 ORDER BY 1
@@ -162,51 +162,51 @@ SELECT artist, COUNT(album)
 FROM spotify
 GROUP BY 1
 ORDER BY 2 DESC
+```
 
 
-
---3. Get the total number of comments for tracks where `licensed = TRUE`.
-
+### 3. Get the total number of comments for tracks where `licensed = TRUE`.
+```sql
 SELECT SUM(comments) AS total_comments
 FROM spotify
 WHERE licensed = TRUE
+```
 
 
-
---4. Find all tracks that belong to the album type `single`.
-
+### 4. Find all tracks that belong to the album type `single`.
+```sql
 SELECT track
 FROM spotify
 WHERE album_type = 'single'
+```
 
 
-
---5. Count the total number of tracks by each artist.
-
+### 5. Count the total number of tracks by each artist.
+```sql
 SELECT artist, COUNT(track) AS tracks
 FROM spotify
 GROUP BY 1
 ORDER BY 2 DESC
+```
 
 
-
---6. Calculate the average danceability of tracks in each album.
-
+### 6. Calculate the average danceability of tracks in each album.
+```sql
 SELECT album, AVG(danceability) AS avg_danceability
 FROM spotify
 GROUP BY 1
 ORDER BY 2 DESC
+```
 
 
-
---7. Find the top 5 tracks with the highest energy values.
-
+### 7. Find the top 5 tracks with the highest energy values.
+```sql
 SELECT track, MAX(energy)
 FROM spotify
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 5
-
+```
 
 
 --8.List all tracks along with their views and likes where `official_video = TRUE`
